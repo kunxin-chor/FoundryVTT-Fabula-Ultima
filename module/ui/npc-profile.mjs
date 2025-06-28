@@ -145,6 +145,8 @@ export class NpcProfileWindow extends Application {
 		/** @type String **/
 		const traits = actor.system.traits.value;
 		const traitsArray = traits.trim().split(',').filter(Boolean);
+		const miscAbilities = actor.items.filter(item => item.type === "miscAbility");
+		const rules = actor.items.filter(item => item.type === "rule");
 		console.debug(`Editing profile of ${JSON.stringify(existing)}`);
 		new Dialog({
 			title: game.i18n.localize('FU.NpcProfileUpdate'),
@@ -154,6 +156,8 @@ export class NpcProfileWindow extends Application {
 				affinities: affinities,
 				affinityMap: affinityMap,
 				traits: traitsArray,
+				miscAbilities: miscAbilities,
+				rules: rules
 			}),
 			buttons: [
 				{
@@ -204,7 +208,7 @@ export class NpcProfileWindow extends Application {
 				},
 				{
 					label: 'Cancel',
-					callback: () => {},
+					callback: () => { },
 				},
 			],
 		}).render(true);
