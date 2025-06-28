@@ -37,7 +37,7 @@
 		<legend>Misc Abilities</legend>
 		{{#each miscAbilities}}
 		<label>
-			<input type="checkbox" name="miscAbilities.{{this._id}}" />
+			<input type="checkbox" name="miscAbilities.{{this._id}}" {{#if (lookup ../existing.revealed.miscAbilities this._id)}}checked{{/if}} />
 			{{this.name}}
 		</label>
 		{{/each}}
@@ -47,7 +47,7 @@
 		<legend>Special Rules</legend>
 		{{#each rules}}
 		<label>
-			<input type="checkbox" name="rules.{{this._id}}" />
+			<input type="checkbox" name="rules.{{this._id}}" {{#if (lookup ../existing.revealed.rules this._id)}}checked{{/if}} />
 			{{this.name}}
 		</label>
 		{{/each}}

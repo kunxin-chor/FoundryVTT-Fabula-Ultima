@@ -203,6 +203,28 @@ export class NpcProfileWindow extends Application {
 							}
 						}
 
+						// MiscAbilities
+						existing.revealed.miscAbilities = {};
+						for (const ability of miscAbilities) {
+							if (form.has(`miscAbilities.${ability._id}`)) {
+								existing.revealed.miscAbilities[ability._id] = true;
+							}
+						}
+						if (Object.keys(existing.revealed.miscAbilities).length === 0) {
+							delete existing.revealed.miscAbilities;
+						}
+
+						// Rules
+						existing.revealed.rules = {};
+						for (const rule of rules) {
+							if (form.has(`rules.${rule._id}`)) {
+								existing.revealed.rules[rule._id] = true;
+							}
+						}
+						if (Object.keys(existing.revealed.rules).length === 0) {
+							delete existing.revealed.rules;
+						}
+
 						await party.updateAdversary(existing);
 					},
 				},
