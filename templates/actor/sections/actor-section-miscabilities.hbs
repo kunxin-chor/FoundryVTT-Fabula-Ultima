@@ -1,0 +1,52 @@
+<section class="desc">
+    <ol class="items-list">
+        <li class="item flexrow items-header">
+            <div class="item-name">{{localize 'FU.Feature'}}</div>
+            <div class="item-full start">{{localize 'FU.Effect'}}</div>
+        </li>
+        {{#each abilities as |item id|}}
+            <li class="item" data-item-id="{{ item._id }}">
+                <div class="flexrow" style="height: fit-content; align-items: flex-start;">
+                    <div class="flexcol">
+                        <div class="flexrow">
+                            {{> "systems/projectfu/templates/actor/partials/actor-item-name.hbs" item=item}}
+                            <div class="item-full start description-effect">
+                                <p>{{ item.system.summary.value}}</p>
+                            </div>
+                        </div>
+                        {{#if item.system.subtype}}
+                            <div class="item-quality">{{ item.quality }}</div>
+                        {{/if}}
+                    </div>
+                    {{#if item.system.hasResource.value}}
+                        <div class="item-m inline-desc" style="text-align: center; padding: 1px;">
+                            <label class="item-quality resource-text-sm" style="flex-grow: 2;">{{ item.system.rp.name }}</label>
+                            <div class="resource-text-t buttons-inc" style="padding: 0 4px;">
+                                <span data-resource="item.rp">{{ item.system.rp.current }}</span>
+                                {{#if (gt item.system.rp.max 0)}}
+                                    <span>/</span>
+                                    <span>{{ item.system.rp.max }}</span>
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/if}}
+                    {{#if item.system.hasClock.value}}
+                        <div class="item-m inline-desc" style="text-align: initial; padding: 1px;">
+                            <div class="progress-container">
+                                {{> "systems/projectfu/templates/actor/partials/actor-progress-clock.hbs"
+                                 arr=item.progressArr
+                                 data=item.system.progress}}
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+                <span class="item-quality"></span>
+                <div class="individual-description align-left {{#unless (inArray _id _expandedIds)}}hidden{{/unless}}">
+                    {{#if item.enrichedHtml.description}}
+                        {{{item.enrichedHtml.description}}}
+                    {{/if}}
+                </div>
+            </li>
+        {{/each}}
+    </ol>
+</section>

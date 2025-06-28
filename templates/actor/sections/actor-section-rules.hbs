@@ -1,0 +1,22 @@
+<section class="desc">
+    <ol class="items-list">
+        <li class="item flexrow items-header">
+            <div class="item-name">{{localize "FU.SpecialRule"}}</div>
+            <div class="item-full start">{{localize 'FU.Effect'}}</div>
+        </li>
+        {{#each rules as |item id|}}
+            <li class="item" data-item-id="{{ item._id }}">
+                <div class="flexrow">
+                    {{> "systems/projectfu/templates/actor/partials/actor-item-name.hbs" item=item}}
+                    <div class="item-full start tiny-desc">
+                        <span class="description-effect">
+                            {{#if item.system.description}}
+                                {{{item.enrichedHtml.description}}}
+                            {{/if}}
+                        </span>
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+    </ol>
+</section>

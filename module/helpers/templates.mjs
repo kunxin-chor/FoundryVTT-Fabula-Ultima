@@ -8,6 +8,8 @@ export const preloadHandlebarsTemplates = async function () {
 		// Actor Section partials.
 		'systems/projectfu/templates/actor/sections/actor-section-classes.hbs',
 		'systems/projectfu/templates/actor/sections/actor-section-features.hbs',
+		'systems/projectfu/templates/actor/sections/actor-section-miscabilities.hbs',
+		'systems/projectfu/templates/actor/sections/actor-section-rules.hbs',
 		'systems/projectfu/templates/actor/sections/actor-section-spells.hbs',
 		'systems/projectfu/templates/actor/sections/actor-section-items.hbs',
 		'systems/projectfu/templates/actor/sections/actor-section-items-treasure.hbs',
