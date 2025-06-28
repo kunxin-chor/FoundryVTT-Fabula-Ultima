@@ -99,6 +99,40 @@
 				</section>
 			</fieldset>
 		{{/if}}
+
+		{{#if revealedMiscAbilities.length}}
+		<fieldset class="section-container title-fieldset desc resource-content">
+			<legend class="resource-label-m">Misc Abilities</legend>
+			<ul class="desc-list">
+			{{#each revealedMiscAbilities}}
+				<li class="desc-item">
+					<strong>{{this.name}}</strong>
+					{{#if this.system.description}}
+						<div class="desc">{{{this.system.description}}}</div>
+					{{/if}}
+				</li>
+			{{/each}}
+			</ul>
+		</fieldset>
+		{{/if}}
+
+		{{#if revealedRules.length}}
+		<fieldset class="section-container title-fieldset desc resource-content">
+			<legend class="resource-label-m">Special Rules</legend>
+			<ul class="desc-list">
+			{{#each revealedRules}}
+				<li class="desc-item">
+					<strong>{{this.name}}</strong>
+					{{#if this.system.description}}
+						<div class="desc">{{{this.system.description}}}</div>
+					{{/if}}
+				</li>
+			{{/each}}
+			</ul>
+		</fieldset>
+		{{/if}}
+
+		
 	</div>
 	{{/if}}
 </div>

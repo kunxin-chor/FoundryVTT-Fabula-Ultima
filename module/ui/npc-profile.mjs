@@ -90,6 +90,10 @@ export class NpcProfileWindow extends Application {
 			};
 		});
 
+		// Filter revealed misc abilities and rules
+		const revealedMiscAbilities = actor.items.filter(item => item.type === 'miscAbility' && this.data.revealed?.miscAbilities?.[item._id]);
+		const revealedRules = actor.items.filter(item => item.type === 'rule' && this.data.revealed?.rules?.[item._id]);
+
 		let context = {
 			...this.data,
 			actor: actor,
@@ -105,6 +109,8 @@ export class NpcProfileWindow extends Application {
 			hp: system.resources.hp.max,
 			mp: system.resources.hp.max,
 			localizedSpecies: FU.species[this.data.species],
+			revealedMiscAbilities,
+			revealedRules,
 		};
 
 		// Ensure expanded state is initialized
